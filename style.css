@@ -1,0 +1,165 @@
+/* =========================================
+   VARIABLES & SISTEMA TIPOGRÁFICO
+   ========================================= */
+:root {
+    /* Paleta de colores: Tema Azul Marino Elegante (Frío) */
+    --bg-main: #1C2B3A; /* Azul Marino Profundo (Fondo principal) */
+    --bg-surface: #293848; /* Azul Acero Cálido (Fondo de las tarjetas) */
+    --text-primary: #E0E7F0; /* Blanco Roto/Plata (Texto principal) */
+    --text-secondary: #A9B3C0; /* Gris Azulado (Texto atenuado) */
+    --accent-color: #00FFFF; /* Cian Neón (Acento moderno y elegante) */
+    --highlight-color: #3B5066; /* Azul Oscuro para bordes y líneas sutiles */
+    
+    /* Fuente Elegante para Títulos */
+    --font-heading: 'Georgia', serif; 
+
+    /* SISTEMA FLUIDO CON CLAMP() (Tipografía Recursiva - NO requiere media queries)
+       La función CLAMP() asegura que el tamaño del texto se ajusta constantemente
+       entre un mínimo (móvil) y un máximo (escritorio).
+    */
+    --fs-body: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+    --fs-h1: clamp(2rem, 1.5rem + 5vw, 3.5rem);
+    --fs-h2: clamp(1.5rem, 1.2rem + 3vw, 2.5rem);
+    --fs-h3: clamp(1.25rem, 1rem + 1.5vw, 1.8rem);
+    
+    /* Variables de Espaciado y Línea */
+    --lh-body: 1.6;
+    --lh-tight: 1.2;
+    --spacing-unit: 1.5em; 
+    
+    --border-radius: 10px;
+}
+
+/* ----------------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Transiciones sutiles para interacciones elegantes */
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); 
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-main); 
+    color: var(--text-primary); 
+    
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+    
+    /* CORRECCIÓN CLAVE: Elimina el scroll horizontal.
+       Esto evita que cualquier desbordamiento accidental muestre la barra. 
+    */
+    overflow-x: hidden; 
+    
+    /* Pequeño padding vertical general, el horizontal se deja al container */
+    padding: 1.5rem 0; 
+}
+
+.container {
+    max-width: 1000px; 
+    margin: 0 auto; 
+    
+    /* Fondo de la tarjeta en azul acero */
+    background: var(--bg-surface); 
+    /* El padding lateral se asegura aquí */
+    padding: 3rem 2rem; 
+    border-radius: var(--border-radius);
+    /* Sombra profunda y sutil para dar volumen */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 255, 255, 0.1); 
+}
+
+/* =========================================
+   ESTILOS DE ENCABEZADOS (Elegantes)
+   ========================================= */
+h1, h2, h3, h4 {
+    /* Aplicamos la escala de tamaño fluida */
+    font-family: var(--font-heading); 
+    font-weight: 700;
+    line-height: var(--lh-tight);
+    margin-bottom: var(--spacing-unit);
+    color: var(--text-primary); 
+}
+
+h1 {
+    font-size: var(--fs-h1); 
+    color: var(--accent-color); /* Acento Cian Neón */
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Espaciado para mayor sofisticación */
+    border-bottom: 3px solid var(--highlight-color); 
+    padding-bottom: 0.5em;
+    display: inline-block; 
+}
+
+h2 {
+    font-size: var(--fs-h2); 
+    margin-top: calc(2 * var(--spacing-unit));
+    color: var(--accent-color); 
+}
+
+h3 {
+    font-size: var(--fs-h3); 
+    color: var(--text-primary);
+    border-left: 4px solid var(--accent-color); /* Línea más sutil */
+    padding-left: 15px;
+    margin-bottom: 1em;
+}
+
+/* =========================================
+   ELEMENTOS DE TEXTO
+   ========================================= */
+p {
+    margin-bottom: var(--spacing-unit);
+    max-width: 70ch; 
+    color: var(--text-secondary); 
+}
+
+p strong {
+    color: var(--text-primary); 
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    opacity: 0.9;
+    font-weight: 300;
+    color: var(--text-primary); 
+    font-style: italic; /* Subtítulo con estilo */
+}
+
+blockquote {
+    border-left: 5px solid var(--accent-color);
+    padding: 1.2rem 1.8rem; /* Mayor padding para más impacto */
+    margin: 2.5rem 0;
+    background: var(--highlight-color); 
+    color: var(--text-primary);
+    font-style: italic;
+    border-radius: var(--border-radius);
+}
+
+code {
+    background-color: #4A5C70; /* Azul oscuro para bloques de código */
+    color: var(--accent-color);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: var(--highlight-color);
+    margin: 3rem 0;
+}
+
+
+/* =========================================
+   RESPONSIVE (Asegurando la recursividad)
+   ========================================= */
+@media (max-width: 600px) {
+    .container {
+        /* Reducimos el padding horizontal para dejar más espacio en móvil */
+        padding: 2rem 1rem; 
+    }
+}
